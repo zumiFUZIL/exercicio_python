@@ -4,7 +4,7 @@ import os
 
 ARQUIVO_DADOS = "banco_dados.json"
 
-# =================== Funções utilitárias =====================
+
 def carregar_dados():
     if os.path.exists(ARQUIVO_DADOS):
         with open(ARQUIVO_DADOS, "r", encoding="utf-8") as f:
@@ -15,7 +15,6 @@ def salvar_dados(dados):
     with open(ARQUIVO_DADOS, "w", encoding="utf-8") as f:
         json.dump(dados, f, indent=4, ensure_ascii=False)
 
-# =================== Interface de Menu =====================
 def menu():
     menu = """
     ================ MENU ================
@@ -29,7 +28,7 @@ def menu():
     => """
     return input(textwrap.dedent(menu))
 
-# =================== Operações Bancárias =====================
+
 def depositar(saldo, valor, extrato, /):
     if valor > 0:
         saldo += valor
@@ -70,7 +69,7 @@ def exibir_extrato(saldo, /, *, extrato):
     print(f"\nSaldo:\t\tR$ {saldo:.2f}")
     print("==========================================")
 
-# =================== Usuários e Contas =====================
+
 def criar_usuario(usuarios):
     cpf = input("Informe o CPF (somente número): ")
     if not cpf.isdigit() or len(cpf) != 11:
@@ -110,7 +109,7 @@ def listar_contas(contas):
         print("=" * 100)
         print(textwrap.dedent(linha))
 
-# =================== Execução principal =====================
+
 def main():
     LIMITE_SAQUES = 3
     AGENCIA = "0001"
